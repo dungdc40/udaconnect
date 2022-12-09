@@ -130,5 +130,10 @@ class PersonService:
         return person
 
     @staticmethod
-    def retrieve_all() -> List[Person]:
-        return db.session.query(Person).all()
+    def retrieve_all(limit=False, offset=False) -> List[Person]:
+        q = db.session.query(Person)
+        if limit:
+            q.limit(limit)
+        if offset:
+            q.offset(offset)
+        return q

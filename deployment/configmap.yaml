@@ -7,3 +7,10 @@ data:
   DB_PORT: "5432"
 metadata:
   name: db-env
+---
+apiVersion: v1
+kind: ConfigMap
+data:
+  KAFKA_SERVER: "kafka-service:9092"
+metadata:
+  name: kafka-env

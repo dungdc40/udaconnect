@@ -1,0 +1,3 @@
+- GRPC get location: send a LocationMessage that contain only location id to Get function, example can be found in /modules/api-location/grpc-getter.py
+
+- GRPC create location: send a LocationMessage to Create function, example can be found in /modules/api-location/grpc-writer.py

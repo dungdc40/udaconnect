@@ -1,0 +1,12 @@
+Since the amount of locations data the app ingests is large, locations api will be moved to its own microservice, then we can use Kubernetes to manage location api
+in a more effective way (scale up/ scale down automatically if needed).
+
+We will use Grpc for location endpoints to reduce size of messages and reduce message transfer time. Grpc message can also be automatically validated by Grpc
+server, so we don't need to write our own input validator service.
+
+We will also utilize Kafka as a queue between Location post api and location post service, location api just receive message, put the message into a Kafka. At the other end,
+location service continuously read new messages from Kafka and write into Mysql. By this way, we improve reliability of location api, so it can survive through large
+amount of traffic.
+
+Persons api is returning all person records from the database, when the amount of person increase, response data will be large,
+we will improve this api to give it ability to return paginated data, so the client can receive necessary data in an acceptable amount of time.
